@@ -26,9 +26,13 @@ const images = [
 const carouseldom = document.querySelector('.carousel');
 let carouselcnt = "";
 
-for(i=0; i<imgarray.length; i++){
+for(i=0; i<images.length; i++){
     const imgcontainer = `<div class="image-container d-none">
-                            <img class="img" src="${imgarray[i]}" />
+                            <img class="img" src="${images[i].image}"/>
+                                <div class="txt-box">
+                                    <h1 id="title-txt${i}">${images[i].title}</h1>
+                                    <h2 id="body-txt${i}">${images[i].text}</h2>
+                                </div>
                             </div>`;   
     carouselcnt += imgcontainer;
 }
@@ -48,10 +52,10 @@ for(i=0; i<imgarray.length; i++){
     function() {
         if (dispayedimg < imgcontainerdom.length - 1) {
 
+           
             imgcontainerdom[dispayedimg].classList.add('d-none');
             dispayedimg++;
             imgcontainerdom[dispayedimg].classList.remove('d-none');
-
             previousarrowDom.classList.remove('std-position');
 
             
@@ -67,7 +71,6 @@ for(i=0; i<imgarray.length; i++){
         previousarrowDom.addEventListener('click', 
         function() {
         if (dispayedimg > 0) {
-
             imgcontainerdom[dispayedimg].classList.add('d-none');
             dispayedimg--;
             imgcontainerdom[dispayedimg].classList.remove('d-none');
@@ -81,3 +84,5 @@ for(i=0; i<imgarray.length; i++){
         } 
      }
 );
+
+
